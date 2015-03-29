@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta Content-Type: text/html; charset=utf-8>
+    <title>Project 3</title>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script>
+    
+$(function () {
+    $('#scatter-graph').highcharts({
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Amount of Funding for Health/Food Versus Number of Farmers Markets by Too and Least States'
+        },
+        subtitle: {
+            text: 'Source: Heinz  2003'
+        },
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'Amount of Funding ($)'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Farmers Markets'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 60,
+            y: 50,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+            borderWidth: 1
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x} markets, ${point.y} of funding'
+                }
+            }
+        },
+        series: [{
+            name: 'Fullerton, ND',
+            color: 'rgba(223, 83, 83, .5)',
+            data: [[0, 392]]
+
+        }, {
+            name: 'Madison, WI',
+            color: 'rgba(119, 152, 191, .5)',
+            data: [[18, 4126641]]
+        }, {
+            name: 'Dallas, OR',
+            color: 'rgba(119, 152, 191, .5)',
+            data: [[1, 10199264]]
+        }]
+    });
+});    
+    
+    
+   
+   
+    
+    
+    
+$(function () { 
+        $('#bar-chart').highcharts({
+                chart: {
+                    type: 'scatter'
+                },
+                title: {
+                    text: 'Project scores'
+                },
+                xAxis: {
+                    categories: ['Project 1', 'Project 2', 'Project 3']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Funding Amount'
+                    }
+                },
+                labels:{
+                    items:[{
+                        html: "This is my label",
+                        style: {
+                            left: '700px',
+                            top: '300px',
+                        }
+                    }]
+                    
+                },
+
+
+                series: [{
+                    name: 'Walker, MN',
+                    color: 'rgba(223, 83, 83, .5)',
+                    data: [398, 2]
+                }, {
+                    name: 'Dallas, OR',
+                    data: [100, 30, 80]
+                }, {
+                    name: 'West Poland, ME',
+                    data: [5, 40, 20]
+                }]
+            });
+        });
+
+        $(function () {
+
+    $(document).ready(function () {
+
+        // Build the chart
+        $('#pie-chart').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Browser market shares at a specific website, 2014'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox',   45.0],
+                    ['IE',       26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari',    8.5],
+                    ['Opera',     6.2],
+                    ['Others',   0.7]
+                ]
+            }]
+        });
+    });
+
+});
+        
+        
+        
+</script>
+
+
+</head>
+
+<body>
+
+<div id="scatter-graph" style="width:90%; height:500px;"></div>
+<div id="bar-chart" style="width:100%; height:400px;"></div>
+<div id="pie-chart" style="width:50%; height:400px;"></div>
+
+
+</body>
+</html>
+
+
+</body>
+</html>
