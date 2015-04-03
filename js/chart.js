@@ -1,6 +1,7 @@
- var farmerMarket = [];
-    
-    
+var farmerMarket = [];
+var funding = [];
+var cities = [];
+ 
     $(document).ready(function() //runs the functions
       {
 
@@ -17,55 +18,89 @@
         $(xml).find('ROW').each(function(){ //starts loop to find all people, etc
             //console.log("once for every person");
             var $ROW = $(this); 
-            //var name = $ROW.attr("name");
-            //var description = $person.find('description').text();
-            //var imageurl = $person.attr('imageurl');
 	    farmerMarket.push(parseInt($ROW.find('markets').text())); //parseInt is a function that says turn this text into an integer. Push adds the data to the back of each one so that order makes sense. Pop goes to the front.
-
-            //var html = '<dt> <img class="bioImage" alt="" src="' + imageurl + '" /> </dt>';
-            //html += '<dd> <span class="loadingPic" alt="Loading" />';
-            //html += '<p class="name">' + name + '</p>';
-            //html += '<p> ' + description + '</p>' ;
-            //html += '</dd>';
-
-            //$('dl').append($(html));
-            
+	    funding.push(parseInt($ROW.find('fund').text()));
+	    cities.push($ROW.find('city').text());
 	    
         });
 	
-	console.log(farmerMarket);
+	//console.log(farmerMarket);
+	//console.log(funding);
 	buildChart(); //finally builds chart -- needs to be inside function but outside loop so it won't try to write the chart 100 times, etc.
     }
-
-    function buildChart(xml){ //tells how to build chart, but need to add buildChart blah blah in document ready above
+    
+    
+    function buildChart(xml) {
+    var chart1 = new Highcharts.Chart({
 	
-	
-	var chart1 = new Highcharts.Chart({
-        chart: {
-            renderTo: 'chart',
-            type: 'bar'
+	chart: {
+            zoomType: 'xy',
+		renderTo: 'chart2' // not in demo ... assigns id ****
         },
         title: {
-            text: 'tears cried'
+            text: 'Farmers Markets vs. Health/Food Initiatives'
         },
-        xAxis: {
-            categories: ['Hearst', 'Marrow', 'Woodward']
+        subtitle: {
+            text: 'Source: WorldClimate.com'
         },
-        yAxis: {
+        xAxis: [{
+            categories: cities,
+            crosshair: true
+        }],
+        yAxis: [{ // Primary yAxis
+            labels: {
+                format: '${value}',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
             title: {
-                text: 'Awards'
+                text: 'Amount of Funding',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
             }
+        }, { // Secondary yAxis
+            title: {
+                text: 'Number of Farmers Markets',
+                //style: {
+                //    color: Highcharts.getOptions().colors[0]
+                //}
+            },
+            labels: {
+                format: '{value}',
+                //style: {
+                  //  color: Highcharts.getOptions().colors[0]
+                //}
+            },
+            opposite: true
+        }],
+        tooltip: {
+            shared: true
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
         },
         series: [{
-            name: 'Putlizers',
-            data: [1, 0, 4]
+            name: 'Number of Food Markets',
+            type: 'column',
+            yAxis: 1,
+            data: farmerMarket,
         }, {
-            name: 'Other',
-            data: farmerMarket
+            name: 'Amount of Funding',
+            type: 'spline',
+            data: funding,
+            tooltip: {
+                valuePrefix: '$'
+            }
         }]
     });
-	
-	
-
-    }	
+};
+    
 });

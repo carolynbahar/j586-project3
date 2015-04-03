@@ -1,0 +1,52 @@
+body{
+    font-family: Georgia, serif;
+
+}
+
+.title{
+    text-align: center;
+}
+
+.title img{
+    width: 70%;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.nav{
+    height: 110px;
+    border-bottom: 5px solid black;
+    
+}
+
+.date{
+    text-transform: uppercase;
+    color: #999;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    float: bottom;
+    /*position: relative;
+        top: 5em;
+    margin-bottom: -5em;*/
+    
+}
+
+.weather{
+    color: #999;
+    font-family: Clarendon LT Std;
+    font-size: 22pt;
+    display: table-cell;
+    vertical-align: bottom;
+    /*position: relative;
+        top: 1.5em;
+    margin-bottom: -1.5em;
+    float: right;*/
+}
+
+
+#chart2{
+    margin-top: 50px;
+    height:50em
+}
+
