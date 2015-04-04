@@ -4,7 +4,7 @@ var otherAwards = [];
     $(document).ready(function() //runs the functions
       {
   
-        $('#table').dataTable( {
+        $('#example').dataTable( {
             "ajax": 'dataTabl.json'
         } );
         
@@ -47,26 +47,39 @@ var otherAwards = [];
     function buildChart(){ //tells how to build chart, but need to add buildChart blah blah in document ready above
 	
 	
-	var chart1 = new Highcharts.Chart({
+	var chart2 = new Highcharts.Chart({
         chart: {
-            renderTo: 'chart',
-            type: 'line'
+            renderTo: 'pie',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
         },
         title: {
             text: 'Amount of Funding for Health and Food Programs'
         },
-        xAxis: {
-            categories: ['2009', '2010', '2011']
-        },
-        yAxis: {
-            title: {
-                text: 'Funding'
-            }
-        },
+        tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+        plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
         series: [{
-            name: 'Putlizers',
-            data: [48390403.15, 107241617.63, 87522175.69]
-        }]
+                type: 'pie',
+                name: 'Percentage of funding',
+                data: [
+                    ['California',   10.8],
+                    ['Oregon',       9.1],
+                    ['Safari',    6.1],
+                    ['Other States',   74]
+                ]
+            }]
     });
 	
 	
