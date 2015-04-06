@@ -60,11 +60,11 @@ var otherAwards = [];
         },
         yAxis: {
             title: {
-                text: 'Funding'
+                text: 'Amount of Funding'
             }
         },
         series: [{
-            name: 'Putlizers',
+            name: 'Funding',
             data: [48390403.15, 107241617.63, 87522175.69]
         }]
     });

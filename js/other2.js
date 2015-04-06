@@ -1,8 +1,66 @@
+
+
+
 var otherAwards = [];
 
     
     $(document).ready(function() //runs the functions
       {
+        
+        
+        
+        
+        
+        
+        
+            /* PIE CHART THEME */
+    Highcharts.theme = {
+       /* LINE/BAR/COLUMN/SLICE COLORS - only used for slices for Plex, if we add multiple data sets in future releases, these colors will work with the rendering of other sets */
+       colors: ['#DFE9F3', '#B7D6EB', '#8CB8D9', '#6F93B5', '#557193', '#335682', '#203B66'],
+	
+       /* CHART TITLE */
+       title: {
+	  style: {
+	     color: 'black',
+	     font: '24px Georgia'
+	  }
+       },
+    
+       /* CHART SUBTITLE */
+       subtitle: {
+	  style: {
+	     color: 'black',
+	     font: '12px Georgia'
+	  }
+       },
+	
+       /* LINE CHART COLORS */
+       plotOptions: {
+	   pie: {
+	      cursor: 'pointer',
+	      borderColor: '#ffffff',
+	      borderWidth: 1,
+	      shadow: false
+	   }
+       }    
+    }; 
+    
+    // Apply the theme
+    var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
   
         $('#example').dataTable( {
             "ajax": 'dataTabl.json'
